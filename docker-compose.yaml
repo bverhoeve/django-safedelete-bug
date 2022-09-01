@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  qargo-db:
+    container_name: django-safedelete-db
+    image: postgres:13.5
+    env_file:
+      - ./.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    shm_size: 1gb
+    networks:
+      - netw
+volumes:
+  db-data:
+
+
+networks:
+  netw:
+    driver: bridge
